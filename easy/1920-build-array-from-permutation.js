@@ -45,7 +45,7 @@
 // solutions:
 // #1
 const buildArray = function(nums) {
-  return nums.map((el, idx) => nums[nums[idx]])
+  return nums.map((num) => nums[num])
 }
 
 // #2
