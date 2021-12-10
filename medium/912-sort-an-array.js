@@ -86,12 +86,17 @@ const swap = (a, b, arr) => {
 }
 
 const sortArray = function(nums) {
-  // bobble sort
+  // bubble sort
   for (let i = nums.length - 1; i > 0; i--) {
+    let noSwaps = true
+
     for (let j = 0; j < i; j++) {
       if (nums[j] > nums[j + 1]) {
         swap(j, j + 1, nums)
+        noSwaps = false
       }
+
+      if (noSwaps) break
     }
   }
 
