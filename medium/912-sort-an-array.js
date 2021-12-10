@@ -73,3 +73,60 @@ const merge = (arr1, arr2) => {
 
   return mergedArr
 }
+
+
+
+
+
+// #3
+const swap = (a, b, arr) => {
+  [arr[a], arr[b]] = [arr[b], arr[a]]
+
+  return arr
+}
+
+const sortArray = function(nums) {
+  // bobble sort
+  for (let i = nums.length - 1; i > 0; i--) {
+    for (let j = 0; j < i; j++) {
+      if (nums[j] > nums[j + 1]) {
+        swap(j, j + 1, nums)
+      }
+    }
+  }
+
+  return nums
+}
+
+// #4
+const sortArray = function(nums) {
+  // selection sort
+  for (let i = 0; i < nums.length; i++) {
+    let min = i
+
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[min] > nums[j]) {
+        min = j
+      }
+    }
+    if (i !== min) swap(i, min, nums)
+  }
+
+  return nums
+}
+
+// #5
+const sortArray = function(nums) {
+  // insertion sort
+  for (let i = 1; i < nums.length; i++) {
+    let cur = nums[i]
+    let j = i - 1
+    for (; j >= 0 && nums[j] > cur; j--) {
+      nums[j + 1] = nums[j]
+    }
+
+    nums[j + 1] = cur
+  }
+
+  return nums
+}
