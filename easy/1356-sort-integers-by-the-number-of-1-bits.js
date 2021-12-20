@@ -73,3 +73,19 @@ const hammingWeight = n => {
 
   return count
 }
+
+// #3
+const sortByBits = function(arr) {
+  const getBits = (num) => {
+    let count = 0
+
+    while (num) {
+      count += num & 1
+      num >>= 1
+    }
+
+    return count
+  }
+
+  return arr.sort((a, b) => getBits(a) - getBits(b) || a - b)
+}
