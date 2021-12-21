@@ -86,3 +86,22 @@ const dominantIndex = function(nums) {
 
   return idx
 }
+
+// #3
+const dominantIndex = function(nums) {
+  let maxNum = Math.max(...nums)
+  let idx = -1
+
+  for (let i = 0; i < nums.length; i++) {
+    if (maxNum === nums[i]) {
+      idx = i
+      continue
+    }
+
+    if (maxNum < nums[i] * 2) {
+      return -1
+    }
+  }
+
+  return idx
+}
