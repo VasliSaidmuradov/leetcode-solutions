@@ -53,3 +53,26 @@ const isAnagram = function(s, t) {
 
   return true
 }
+
+// #3
+const isAnagram = function(s, t) {
+  if (s.length != t.length) return false
+
+  const arr = new Array(256).fill(0)
+
+  let i = 0
+  let m = 0
+
+  while (i < s.length) {
+    arr[s.charCodeAt(i) - 97]++
+    arr[t.charCodeAt(i) - 97]--
+    i++
+  }
+
+  while (m < arr.length) {
+    if (arr[m] != 0)  return false    
+    m++
+  }
+
+  return true
+}
