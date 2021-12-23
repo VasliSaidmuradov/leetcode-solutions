@@ -46,3 +46,29 @@ const firstPalindrome = function(arr) {
 
   return ''
 }
+
+
+// #2
+const firstPalindrome = function(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (isPalindrome(arr[i])) {
+      return arr[i]
+    }
+  }
+
+  return ''
+}
+
+const isPalindrome = (str) => {
+  let i = 0
+  let j = str.length - 1
+
+  while (i < j) {
+    if (str[i] !== str[j]) return false
+
+    i++
+    j--
+  }
+
+  return true
+}
