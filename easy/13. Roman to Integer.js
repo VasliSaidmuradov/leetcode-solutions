@@ -87,7 +87,7 @@ const romanToInt = function(s) {
 
 
 // #2
-romanToInt = function(s) {
+const romanToInt = function(s) {
   const romanHash = {
     "I": {
       toInt: 1,
@@ -133,4 +133,21 @@ romanToInt = function(s) {
   }
 
   return total
+}
+
+// #3
+const romanToInt = function(s) {
+  const a = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }
+
+  let res = 0
+
+  for(let i = 0; i < s.length; i++) {
+    res += a[s[i]]
+
+    if (a[s[i-1]] < a[s[i]]) {
+      res -= 2 * a[s[i-1]]
+    }
+  }
+
+  return res
 }
