@@ -56,3 +56,34 @@ const singleNumber = function(nums) {
     if (obj[prop] === 1) return prop
   }
 }
+
+// #3
+const singleNumber = function(nums) {
+  let num = nums[0]
+
+  for (let i = 1; i < nums.length; i++) {
+    num ^= nums[i]
+  }
+
+  return num
+}
+
+// #4
+const singleNumber = (nums) => {
+  nums.sort((a, b) => a - b)
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== nums[i + 1]) return nums[i]
+    i++
+  }
+}
+
+// #5
+const singleNumber = (nums) => {
+  nums.sort((a, b) => a - b)
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] ^ nums[i + 1]) return nums[i]
+    i++
+  }
+}
