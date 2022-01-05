@@ -42,7 +42,8 @@ const sortArray = function(nums) {
 }
 
 /**
-* @param {number[]} arr1, arr2 soted
+* @param {number[]} arr1 
+* @param {number[]} arr2 
 * @return {number[]}
 */
 const merge = (arr1, arr2) => {
@@ -75,10 +76,7 @@ const merge = (arr1, arr2) => {
 }
 
 
-
-
-
-// #3
+// #3 Bubble Sort
 const swap = (a, b, arr) => {
   [arr[a], arr[b]] = [arr[b], arr[a]]
 
@@ -103,7 +101,7 @@ const sortArray = function(nums) {
   return nums
 }
 
-// #4
+// #4 Selection Sort
 const sortArray = function(nums) {
   // selection sort
   for (let i = 0; i < nums.length; i++) {
@@ -120,7 +118,7 @@ const sortArray = function(nums) {
   return nums
 }
 
-// #5
+// #5 Insertion Sort
 const sortArray = function(nums) {
   // insertion sort
   for (let i = 1; i < nums.length; i++) {
@@ -134,4 +132,36 @@ const sortArray = function(nums) {
   }
 
   return nums
+}
+
+
+// #6 Quick Sort
+const quickSort = (nums, left = 0, right = nums.length - 1) => {
+  if (left < right) {
+    const pivotIdx = pivot(nums, left, right)
+
+    // left
+    quickSort(nums, left, pivotIdx - 1)
+
+    // right
+    quickSort(nums, pivotIdx + 1, right)
+  }
+
+  return nums
+}
+
+const pivot = (arr, start = 0, end = arr.length - 1) => {
+  const pivot = arr[start]
+  let swapIdx = start
+
+  for (let i = start + 1; i <= end; i++) {
+    if (arr[i] < pivot) {
+      swapIdx++
+      swap(i, swapIdx, arr)
+    }
+  }
+
+  swap(start, swapIdx, arr)
+
+  return swapIdx
 }
