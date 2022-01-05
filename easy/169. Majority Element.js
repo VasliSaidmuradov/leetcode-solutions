@@ -33,8 +33,15 @@ const majorityElement = function(nums) {
   for (let i = 0; i < len; i++) {
     obj[nums[i]] = obj[nums[i]] ? obj[nums[i]] + 1 : 1
 
-    if(len/2 < obj[nums[i]]) return nums[i]
+    if(len / 2 < obj[nums[i]]) return nums[i]
   }
 
   return majority
+}
+
+// #2
+const majorityElement = function(nums) {
+  nums.sort((a, b) => a - b)
+
+  return nums[Math.floor(nums.length / 2)]
 }
