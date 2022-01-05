@@ -93,9 +93,9 @@ const sortArray = function(nums) {
         swap(j, j + 1, nums)
         noSwaps = false
       }
-
-      if (noSwaps) break
     }
+
+    if (noSwaps) break
   }
 
   return nums
