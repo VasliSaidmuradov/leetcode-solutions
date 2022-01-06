@@ -165,3 +165,33 @@ const pivot = (arr, start = 0, end = arr.length - 1) => {
 
   return swapIdx
 }
+
+// #7 Radix Sort
+const getDigit = (num, place) => {
+  return Math.floor(Math.abs(num) / (10**place)) % 10
+}
+
+const digitCount = num => {
+  return !num ? 1: Math.floor(Math.log10(Math.abs(num))) + 1
+}
+
+const getMostDigit = arr => {
+  return Math.max(digitCount(Math.max(...arr)), digitCount(Math.min(...arr)))
+}
+
+export const radixSort = nums => {
+  const maxDig = getMostDigit(nums)
+
+  for (let i = 0; i < maxDig; i++) {
+    const bucket = Array.from({ length: 10 }, () => [])
+
+    for (let j = 0; j < nums.length; j++) {
+      bucket[getDigit(nums[j], i)].push(nums[j])
+    }
+
+    nums = bucket.flat()
+    // nums = [].concat(...bucket)
+  }
+
+  return nums
+}
