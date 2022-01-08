@@ -136,15 +136,15 @@ const sortArray = function(nums) {
 
 
 // #6 Quick Sort
-const quickSort = (nums, left = 0, right = nums.length - 1) => {
+const sortArray = (nums, left = 0, right = nums.length - 1) => {
   if (left < right) {
     const pivotIdx = pivot(nums, left, right)
 
     // left
-    quickSort(nums, left, pivotIdx - 1)
+    sortArray(nums, left, pivotIdx - 1)
 
     // right
-    quickSort(nums, pivotIdx + 1, right)
+    sortArray(nums, pivotIdx + 1, right)
   }
 
   return nums
@@ -167,31 +167,34 @@ const pivot = (arr, start = 0, end = arr.length - 1) => {
 }
 
 // #7 Radix Sort
-const getDigit = (num, place) => {
-  return Math.floor(Math.abs(num) / (10**place)) % 10
-}
 
-const digitCount = num => {
-  return !num ? 1: Math.floor(Math.log10(Math.abs(num))) + 1
-}
+// Radix sort does not work with negative numbers
 
-const getMostDigit = arr => {
-  return Math.max(digitCount(Math.max(...arr)), digitCount(Math.min(...arr)))
-}
+// const getDigit = (num, place) => {
+//   return Math.floor(Math.abs(num) / (10**place)) % 10
+// }
 
-export const radixSort = nums => {
-  const maxDig = getMostDigit(nums)
+// const digitCount = num => {
+//   return !num ? 1: Math.floor(Math.log10(Math.abs(num))) + 1
+// }
 
-  for (let i = 0; i < maxDig; i++) {
-    const bucket = Array.from({ length: 10 }, () => [])
+// const getMostDigit = arr => {
+//   return Math.max(digitCount(Math.max(...arr)), digitCount(Math.min(...arr)))
+// }
 
-    for (let j = 0; j < nums.length; j++) {
-      bucket[getDigit(nums[j], i)].push(nums[j])
-    }
+// export const radixSort = nums => {
+//   const maxDig = getMostDigit(nums)
 
-    nums = bucket.flat()
-    // nums = [].concat(...bucket)
-  }
+//   for (let i = 0; i < maxDig; i++) {
+//     const bucket = Array.from({ length: 10 }, () => [])
 
-  return nums
-}
+//     for (let j = 0; j < nums.length; j++) {
+//       bucket[getDigit(nums[j], i)].push(nums[j])
+//     }
+
+//     nums = bucket.flat()
+//     // nums = [].concat(...bucket)
+//   }
+
+//   return nums
+// }
