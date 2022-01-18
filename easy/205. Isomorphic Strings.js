@@ -61,3 +61,18 @@ const isIsomorphic = function(s, t) {
 
   return true
 }
+
+// #3
+const isIsomorphic = function(s, t) {
+  let charMap = new Map()
+
+  for (let i = 0; i < s.length; i += 1) {
+    if (!charMap.get(s[i])) {
+    charMap.set(s[i], t[i])
+    } else {
+    if (charMap.get(s[i]) != t[i]) return false
+    }
+  }
+
+  return new Set([...charMap.values()]).size == charMap.size
+}
