@@ -1,3 +1,5 @@
+// 414-third-maximum-number
+
 // Given an integer array nums, return the third distinct maximum number in this array. If the third maximum does not exist, return the maximum number.
 
  
@@ -54,4 +56,43 @@ const thirdMax = function(nums) {
   }
 
   return max
+}
+
+
+// #2
+const thirdMax = function(nums) {
+  let unique = [...new Set(nums)]
+
+  if (unique.length < 3) {
+    return Math.max(...unique)
+  }
+
+  console.log()
+  return unique.sort((a, b) => b - a)[2]
+}
+
+// #3
+const thirdMax = function(nums) {
+  const set = new Set(nums)
+
+  let max = null
+  let second = null
+  let third = null
+
+  for (let value of set) {
+    if (max === null || value > max) {
+      third = second
+      second = max
+      max = value
+    } else if (second === null || value > second) {
+      third = second
+      second = value
+    } else if (third === null || value > third) {
+      third = value
+    }
+  }
+
+  if (third === null) return max
+
+  return third
 }
