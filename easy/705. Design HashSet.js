@@ -105,3 +105,21 @@ MyHashSet.prototype.remove = function(key) {
 MyHashSet.prototype.contains = function(key) {
   return this.t.has(key)  
 }
+
+
+// #3
+const MyHashSet = function() {
+  this.set = {}
+}
+
+MyHashSet.prototype.add = function(key) {
+  this.set[key] = true
+}
+
+MyHashSet.prototype.remove = function(key) {
+  delete this.set[key]
+}
+
+MyHashSet.prototype.contains = function(key) {
+  return this.set.hasOwnProperty(key) 
+}
