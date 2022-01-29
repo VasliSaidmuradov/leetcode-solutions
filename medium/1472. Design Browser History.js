@@ -101,3 +101,31 @@ BrowserHistory.prototype.forward = function(steps) {
 
   return this.history[this.history.length - 1]
 }
+
+
+// #3
+const BrowserHistory = function(homepage) {
+  this.history = [homepage]
+  this.idx = 0
+}
+
+BrowserHistory.prototype.visit = function(url) {
+  let n = this.history.length
+  
+  for (let i = this.idx + 1; i < n; i++) {
+    this.history.pop()
+  }
+
+  this.history.push(url)
+  this.idx++
+}
+
+BrowserHistory.prototype.back = function(steps) {
+  this.idx = Math.max(0, this.idx - steps)
+  return this.history[this.idx]
+}
+
+BrowserHistory.prototype.forward = function(steps) {
+  this.idx = Math.min(this.history.length - 1, this.idx + steps)
+  return this.history[this.idx]
+}
