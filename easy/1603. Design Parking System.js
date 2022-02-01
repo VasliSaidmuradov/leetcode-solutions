@@ -74,3 +74,20 @@ ParkingSystem.prototype.addCar = function(carType) {
 * var obj = new ParkingSystem(big, medium, small)
 * var param_1 = obj.addCar(carType)
 */
+
+
+// #2
+const ParkingSystem = function(big, medium, small) {
+  this['1'] = [big, 0]
+  this['2'] = [medium, 0]
+  this['3'] = [small, 0]
+}
+
+ParkingSystem.prototype.addCar = function(carType) {
+  if (this[carType][0] <= this[carType][1]) {
+    return false
+  }	else { 
+    this[carType][1]++
+    return true
+  }
+}
