@@ -1,3 +1,5 @@
+// 1876. Substrings of Size Three with Distinct Characters
+
 // A string is good if there are no repeated characters.
 
 // Given a string s​​​​​, return the number of good substrings of length three in s​​​​​​.
@@ -66,6 +68,68 @@ const countGoodSubstrings = function(s) {
     }
 
     i++
+  }
+
+  return count
+}
+
+// #3
+const countGoodSubstrings = function(s) {
+  let count = 0
+  let set = { size: 0 }
+
+  for (let i = 0; i < 3; i++) {
+    if (set[s[i]]) {
+      set[s[i]] += 1
+    } else {
+      set[s[i]] = 1
+      set.size++
+    }
+  }
+  if (set.size === 3) count++
+ 
+  for (let i = 3; i < s.length; i++) {
+    let f = s[i-3]
+    let l = s[i]
+
+    set[f]--
+
+    if (set[f] === 0) {
+      delete set[f]
+      set.size--
+    }
+
+    if (set[l]) {
+      set[l]++
+    } else {
+      set[l] = 1
+      set.size++
+    }
+
+    if (set.size === 3) count++
+  }
+
+  return count
+}
+
+// #4
+const countGoodSubstrings = function(s) {
+  let count = 0
+
+  let i = 0
+  let j = 2
+
+  let set = new Set()
+
+  for (let i = 0; i < s.length - 2; i++) {
+    const subStr = s.slice(i, i+3)
+    set.add(s[i])
+    set.add(s[i+1])
+    set.add(s[i+2])
+
+    if (set.size === 3) count++
+
+    set.delete(s[i])
   }
 
   return count
