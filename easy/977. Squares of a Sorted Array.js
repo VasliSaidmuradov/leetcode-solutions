@@ -110,3 +110,26 @@ const sortedSquares = function(nums) {
 
   return result
 }
+
+// #5
+const sortedSquares = function(nums) {
+  const res = new Array(nums.length).fill(0)
+  let start = 0
+  let end = nums.length - 1
+  let i = end
+
+  while (i >= 0) {
+    if (Math.abs(nums[start]) > Math.abs(nums[end])) {
+      res[i] = nums[start] ** 2
+      start++
+    }
+    else {
+      res[i] = nums[end] ** 2
+      end--
+    }
+
+    i--
+  }
+
+  return res
+}
