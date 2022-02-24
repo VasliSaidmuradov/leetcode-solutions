@@ -1,3 +1,5 @@
+// 21. Merge Two Sorted Lists
+
 // You are given the heads of two sorted linked lists list1 and list2.
 
 // Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
@@ -43,17 +45,41 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
- const mergeTwoLists = function(l1, l2) {
+
+// #1
+const mergeTwoLists = function(l1, l2) {
   if (l1 == null)
-      return l2;
+		return l2;
   if (l2 == null)
-      return l1;
+		return l1;
 
   if (l1.val < l2.val) {
-      l1.next = mergeTwoLists(l1.next, l2);
-      return l1;
+		l1.next = mergeTwoLists(l1.next, l2);
+		return l1;
   } else {
-      l2.next = mergeTwoLists(l1, l2.next);
-      return l2;
+		l2.next = mergeTwoLists(l1, l2.next);
+		return l2;
   }
+}
+
+// #2
+const mergeTwoLists = function(list1, list2) {
+	const dummy = { val : -1, next : null }
+	let cur = dummy
+
+	while (list1 && list2) {
+		if(list1.val > list2.val) {
+			cur.next = list2
+			list2 = list2.next
+		} else {
+			cur.next = list1;
+			list1 = list1.next
+		}
+
+		cur = cur.next
+	}
+
+	cur.next = list1 || list2
+
+	return dummy.next
 }
