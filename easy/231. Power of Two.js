@@ -1,3 +1,5 @@
+// 231. Power of Two
+
 // Given an integer n, return true if it is a power of two. Otherwise, return false.
 
 // An integer n is a power of two, if there exists an integer x such that n == 2x.
@@ -56,4 +58,13 @@ const isPowerOfTwo = (num) => {
   }
 
   return num === 1
+}
+
+// #4
+const isPowerOfTwo = function(n) {
+  if (n === 0) return false
+
+  let res = Math.log2(n)
+
+  return Math.floor(res) === res ? true : false
 }
