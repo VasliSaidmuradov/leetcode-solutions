@@ -1,3 +1,5 @@
+// 1491. Average Salary Excluding the Minimum and Maximum Salary
+
 // Given an array of unique integers salary where salary[i] is the salary of the employee i.
 
 // Return the average salary of employees excluding the minimum and maximum salary.
@@ -39,8 +41,23 @@
 
 // Solutions:
 
+// #0
+const average = function(salary) {
+  let sum = 0
+  let min = Number.MAX_SAFE_INTEGER
+  let max = Number.MIN_SAFE_INTEGER
+
+  for (let i = 0; i < salary.length; i++) {
+    sum += salary[i]
+    min = Math.min(salary[i], min)
+    max = Math.max(salary[i], max)
+  }
+
+  return (sum - min - max) / (salary.length - 2)
+}
+
 // #1
-  const average = function(salary) {
+const average = function(salary) {
   salary.sort((a, b) => a - b)
   let sum = 0
 
@@ -49,10 +66,10 @@
   }
 
   return sum / (salary.length - 2)
-  }
+}
   
 // #2
-  const average = function(salary) {
+const average = function(salary) {
   salary.sort((a, b) => a - b)
 
   let sum = 0
@@ -63,4 +80,4 @@
   }
 
   return sum / end
-  }
+}
