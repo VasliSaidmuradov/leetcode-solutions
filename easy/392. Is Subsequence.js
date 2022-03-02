@@ -39,26 +39,42 @@ const isSubsequence = function(s, t) {
   return idx === s.length
 }
 
-// 32
+// #2
 const isSubsequence = function(s, t) {
-  let currentIndex = 0;
+  let currentIndex = 0
 
   for (let i = 0; i < s.length; i++) {
-    const found = t.indexOf(s[i], currentIndex);
-      if (found < currentIndex) {
-      return false;
+    const found = t.indexOf(s[i], currentIndex)
+    
+    if (found < currentIndex) {
+      return false
     } else {
-      currentIndex = found + 1;
+      currentIndex = found + 1
     }
   }
-  return true;
+
+  return true
 }
 
+// #3
 var isSubsequence = function(s, t) {
   let index = -1
   for (let ch of s) {
     index = t.indexOf(ch, index + 1)
     if (index < 0) return false
   }
+  return true
+}
+
+// #4
+const isSubsequence = function(s, t) {
+  for (let i = 0; i < s.length; i++) {
+    const idx = t.search(s[i])
+
+    if (idx === -1) return false
+  
+    t = t.substring(idx + 1)
+  }
+
   return true
 }
