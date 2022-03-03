@@ -66,6 +66,14 @@ const hammingWeight = n => {
   return count
 }
 
+const hammingWeight = function(n) {
+  let count = 0
+  for (i of n.toString(2)) {
+    if(i === '1') count++
+  }
+  return count
+}
+
 // #3
 const hammingWeight = function (n) {
   let count = 0
