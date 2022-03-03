@@ -54,3 +54,17 @@ const subtractProductAndSum = function(n) {
   
   return product - sum; 
 }
+
+// #3
+const subtractProductAndSum = function(n) {
+  const str = n.toString()
+  let product = 1
+  let sum = 0
+
+  for (const s of str) {
+    product *= +s
+    sum += +s
+  }
+
+  return product - sum
+}
