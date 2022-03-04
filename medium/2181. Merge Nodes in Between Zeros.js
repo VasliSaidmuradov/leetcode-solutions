@@ -68,3 +68,23 @@ const mergeNodes = function(head) {
 
   return dummy.next
 }
+
+// #2
+const mergeNodes = function(head) {
+  let cur = head
+  let sum = 0
+
+  while (cur.next && cur.next.next){
+    sum += cur.next.val
+
+    if(cur.next.next.val === 0) {
+      cur.next.val = sum
+      sum = 0
+      cur = cur.next
+    }
+
+    cur.next = cur.next.next
+  }
+
+  return head.next
+}
