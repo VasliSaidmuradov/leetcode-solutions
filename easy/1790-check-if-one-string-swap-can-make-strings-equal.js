@@ -48,8 +48,8 @@ const areAlmostEqual = function(s1, s2) {
   for (let i = 0; i < s1.length; i++) {
     if (s1[i] !== s2[i]) count++
 
-    obj1[s1[i]] = obj1[s1[i]] ? obj1[s1[i]] + 1 : 1
-    obj2[s2[i]] = obj2[s2[i]] ? obj2[s2[i]] + 1 : 1
+    obj1[s1[i]] = (obj1[s1[i]] || 1) + 1
+    obj2[s2[i]] = (obj2[s2[i]] || 1) + 1
 
     if (count > 2) return false
   }
@@ -71,8 +71,8 @@ const areAlmostEqual = function(s1, s2) {
   for (let i = 0; i < s1.length; i++) {
     if (s1[i] !== s2[i]) {
       count++
-      obj1[s1[i]] = obj1[s1[i]] ? obj1[s1[i]] + 1 : 1
-      obj2[s2[i]] = obj2[s2[i]] ? obj2[s2[i]] + 1 : 1
+      obj1[s1[i]] = (obj1[s1[i]] || 1) + 1
+      obj2[s2[i]] = (obj2[s2[i]] || 1) + 1
     }
 
     if (count > 2) return false
