@@ -32,7 +32,7 @@ const canMakeArithmeticProgression = function(arr) {
 
   let distance = Math.abs(arr[0] - arr[1])
 
-  for (let i = 0; i < arr.length - 1; i++) {
+  for (let i = 1; i < arr.length - 1; i++) {
     let temp = Math.abs(arr[i] - arr[i + 1])
 
     if (distance !== temp) return false
