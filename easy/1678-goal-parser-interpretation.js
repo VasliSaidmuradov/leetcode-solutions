@@ -36,7 +36,7 @@
 // Solutions: 
 
 // #1
-const interpret = function(command) {
+const interpret1 = function(command) {
   let i = 0
   let ans = ''
 
@@ -59,6 +59,36 @@ const interpret = function(command) {
 }
 
 // #2
-const interpret = function(command) {
+const interpret2 = function(command) {
   return command.split('()').join('o').split('(al)').join('al')
+}
+
+// #3
+const interpret3 = function(command) {
+  let result = ''
+
+  const helper = (index) => {
+    if (index < command.length) {
+      const c = command[index]
+
+      if (c === 'G') {
+        result += c
+        helper(index + 1)
+      } else {
+        const nextC = command[index + 1]
+
+        if (nextC === ')') {
+          result += 'o'
+          helper(index + 2)
+        } else {
+          result += 'al'
+          helper(index + 4)
+        }
+      }
+    }
+  }
+
+  helper(0)
+
+  return result
 }
