@@ -1,3 +1,5 @@
+// 1768. Merge Strings Alternately
+
 // You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
 
 // Return the merged string.
@@ -43,7 +45,7 @@
 // Solutions:
 
 // #1
-const mergeAlternately = function(word1, word2) {
+const mergeAlternately1 = function(word1, word2) {
   let res = ''
   const maxLen = Math.max(word1.length, word2.length)
 
@@ -57,7 +59,7 @@ const mergeAlternately = function(word1, word2) {
 }
 
 // #2
-const mergeAlternately = function(word1, word2) {
+const mergeAlternately2 = function(word1, word2) {
   let res = ''
   let i = 0
 
@@ -74,6 +76,30 @@ const mergeAlternately = function(word1, word2) {
 
   while (i < word2.length) {
     res += word2[i]
+    i++
+  }
+
+  return res
+}
+
+// #3
+const mergeAlternately3 = function(word1, word2) {
+  const length = Math.max(word1.length, word2.length);
+  let merge = '';
+  for (let i = 0; i < length; i++) {
+    merge += (word1[i] ?? '') + (word2[i] ?? '');
+  }
+
+  return merge;
+}
+
+// #4
+const mergeAlternately = function(s, t) {
+  let res = ''
+  let i = 0
+
+  while (i < s.length || i < t.length) {
+    res += (s[i] || '') + (t[i] || '')
     i++
   }
 
