@@ -1,3 +1,5 @@
+// 876. Middle of the Linked List
+
 // Given the head of a singly linked list, return the middle node of the linked list.
 
 // If there are two middle nodes, return the second middle node.
@@ -38,16 +40,28 @@
 // Solutions:
 
 // #1
-const middleNode = function(head) {
-  if (!head.next) return head;
+const middleNode1 = function(head) {
+  if (!head.next) return head
 
-  let slow = head;
-  let fast = head;
+  let slow = head
+  let fast = head
 
   while (fast && fast.next) {
     slow = slow.next
-    fast = fast.next.next;
+    fast = fast.next.next
   }
 
-  return slow;
+  return slow
+}
+
+// #2
+const middleNode2 = function(head) {
+  const arr = []
+
+  while(head !== null) {
+    arr.push(head)
+    head = head.next
+  }
+
+  return arr[Math.floor(arr.length/2)]
 }
