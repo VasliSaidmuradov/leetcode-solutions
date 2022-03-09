@@ -1,3 +1,5 @@
+// 1290. Convert Binary Number in a Linked List to Integer
+
 // Given head which is a reference node to a singly-linked list. The value of each node in the linked list is either 0 or 1. The linked list holds the binary representation of a number.
 
 // Return the decimal value of the number in the linked list.
@@ -37,7 +39,6 @@
 
 // Solutions: 
 
-// #1
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -50,7 +51,8 @@
  * @return {number}
  */
 
- const getDecimalValue = function(head) {
+// #1
+const getDecimalValue1 = function(head) {
   let binary = ''
 
   while (head) {
@@ -60,4 +62,27 @@
   }
 
   return parseInt(binary, 2)
+}
+
+
+// #2
+const getDecimalValue2 = function(head) {
+  let number = 0
+
+  while (head) {
+    number = number * 2 + head.val
+    head = head.next
+  }
+
+  return number
+}
+
+// #3
+const getDecimalValue3 = function(head) {
+  let num = head.val
+  while (head.next) {
+    num = (num << 1) | head.next.val
+    head = head.next
+  }
+  return num
 }
