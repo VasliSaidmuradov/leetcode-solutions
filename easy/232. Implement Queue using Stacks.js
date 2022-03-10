@@ -42,7 +42,7 @@
 
 
 // #1
-const MyQueue = function() {
+const MyQueue1 = function() {
   this.queue = []
 }
 
@@ -64,7 +64,7 @@ MyQueue.prototype.empty = function() {
 
 // #2
 // with stacks
-const MyQueue = function() {
+const MyQueue2 = function() {
   this.stack1 = []
   this.stack2 = []
 }
@@ -91,9 +91,7 @@ MyQueue.prototype.peek = function() {
 
   }
 
-  last = this.stack2.pop()
-  this.stack2.push(last)
-  return last
+  return this.stack2[this.stack2.length - 1]
 }
 
 MyQueue.prototype.empty = function() {
