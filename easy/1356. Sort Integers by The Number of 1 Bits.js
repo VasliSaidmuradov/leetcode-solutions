@@ -1,3 +1,5 @@
+// 1356. Sort Integers by The Number of 1 Bits
+
 // You are given an integer array arr. Sort the integers in the array in ascending order by the number of 1's in their binary representation and in case of two or more integers have the same number of 1's you have to sort them in ascending order.
 
 // Return the array after sorting it.
@@ -33,7 +35,19 @@
 // Solutions:
 
 // #1
-const sortByBits = function(arr) {
+const sortByBits1 = function(arr) {
+  const hammingWeight = n => {
+    n = (n).toString(2)
+  
+    let count = 0
+  
+    for(let i = 0; i < n.length; i++) {
+      if (n[i] === 1) count++
+    }
+  
+    return count
+  }
+
   const sorted = arr.sort((a, b) => {
     const aa = hammingWeight(a)
     const bb = hammingWeight(b)
@@ -46,32 +60,20 @@ const sortByBits = function(arr) {
   return sorted
 }
 
-const hammingWeight = n => {
-  n = (n).toString(2)
-
-  let count = 0
-
-  for(let i = 0; i < n.length; i++) {
-    if (n[i] == 1) count++
-  }
-
-  return count
-}
-
 // #2
-const sortByBits = function(arr) {
-  return arr.sort((a, b) => hammingWeight(a) - hammingWeight(b) || a - b)
-}
-
-const hammingWeight = n => {
-  let count = 0
-
-  while(n) {
-    count += n & 1
-    n >>= 1
+const sortByBits2 = function(arr) {
+  const hammingWeight = n => {
+    let count = 0
+  
+    while(n) {
+      count += n & 1
+      n >>= 1
+    }
+  
+    return count
   }
 
-  return count
+  return arr.sort((a, b) => hammingWeight(a) - hammingWeight(b) || a - b)
 }
 
 // #3
