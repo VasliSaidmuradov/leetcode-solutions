@@ -61,3 +61,25 @@ const removeDuplicateLetters = function(s) {
   // return resultant string
   return res
 }
+
+
+// #2
+const removeDuplicateLetters2 = function(s) {
+  const stack = []
+
+  for (let i = 0; i < s.length; i++) {
+    let char = s[i]
+    // if s[i] already appears in stack, jump to next loop
+    if (stack.indexOf(char) > -1) continue
+
+    while (stack.length && stack[stack.length - 1] > char && s.indexOf(stack[stack.length - 1], i) > i) {
+      // remove top of stack
+      stack.pop()
+    }
+    
+    // put s[i] into top of stack
+    stack.push(char)
+  }
+
+  return stack.join('')
+}
