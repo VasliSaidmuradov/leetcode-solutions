@@ -83,3 +83,20 @@ const twoCitySchedCost = function(costs) {
 // Add the diff cost to the total
 // 470 + (-350) + -(10) = 110
 // return cost.
+
+
+// #2
+const twoCitySchedCost2 = function(costs) {
+  //To optimize the total costs, let's sort the persons by price_A - price_B 
+  // then send the first n persons to the city A, and the others to the city B, 
+  //because this way the company costs are minimal.
+  costs.sort((a , b) => (a[0] - a[1]) - (b[0] - b[1]))
+  let minCost = 0
+  const half = costs.length / 2
+
+  for(let i = 0 ; i < half ; i++){
+    minCost += costs[i][0] + costs[i + half][1]
+  }
+
+  return minCost
+}
