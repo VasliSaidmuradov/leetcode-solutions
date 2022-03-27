@@ -1,3 +1,5 @@
+// 1337. The K Weakest Rows in a Matrix
+
 // You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's (representing civilians). The soldiers are positioned in front of the civilians. That is, all the 1's will appear to the left of all the 0's in each row.
 
 // A row i is weaker than a row j if one of the following is true:
@@ -62,7 +64,7 @@
 
 
 // #1
-const kWeakestRows = function(mat, k) {
+const kWeakestRows1 = function(mat, k) {
   const arr = mat.map((item, idx) => ({idx, sum: item.reduce((acc, el) => acc + el)}))
 
   const res = []
@@ -70,6 +72,43 @@ const kWeakestRows = function(mat, k) {
 
   for (let j = 0; j < k; j++) {
     res.push(arr[j].idx)
+  }
+
+  return res
+}
+
+// #2
+const kWeakestRows2 = function(mat, k) {
+  const input = mat.map((current, index) => {
+    return ({index, power: current.join('').replaceAll('0', '').length});
+  });
+
+  input.sort((a, b) => {
+    return a.power === b.power ? a.index - b.index : a.power - b.power;
+  });
+
+  return input.slice(0, k).map(({ index }) => index);
+}
+
+// #3
+const kWeakestRows3 = function(mat, k) {
+  const soldiers = []
+  const res = []
+
+  for (let i = 0; i < mat.length; i++) {
+    let count = 0
+
+    for (let a of mat[i]) {
+      if (a) count++
+    }
+
+    soldiers.push({idx: i, count})
+  }
+
+  soldiers.sort((a, b) => a.count - b.count)
+
+  for (let i = 0; i < k; i++) {
+    res.push(soldiers[i].idx)
   }
 
   return res
