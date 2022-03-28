@@ -80,33 +80,44 @@ const binarySearch = (arr, target) => {
 
 // #2
 
-const search = function(nums, target) {
-  return binarySearch(nums, target)
-}
-
-const binarySearch = (nums, target) => {
-  let left = 0,
-  right = nums.length - 1
-
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2)
-
-    if (nums[mid] === target) return true
-
-    if (nums[left] < nums[mid]) {
-      if (nums[left] <= target && target < nums[mid])
-        right = mid - 1
-      else
-        left = mid + 1
-    } else if (nums[left] === nums[mid]) {
-      left++
-    } else {
-      if (nums[mid] < target && target <= nums[right])
-        left = mid + 1
-      else
-        right = mid - 1
+const search2 = function(nums, target) {
+  const binarySearch = (nums, target) => {
+    let left = 0,
+    right = nums.length - 1
+  
+    while (left <= right) {
+      const mid = Math.floor((left + right) / 2)
+  
+      if (nums[mid] === target) return true
+  
+      if (nums[left] < nums[mid]) {
+        if (nums[left] <= target && target < nums[mid])
+          right = mid - 1
+        else
+          left = mid + 1
+      } else if (nums[left] === nums[mid]) {
+        left++
+      } else {
+        if (nums[mid] < target && target <= nums[right])
+          left = mid + 1
+        else
+          right = mid - 1
+      }
     }
+  
+    return false
   }
 
-  return false
+  return binarySearch(nums, target)
+
+}
+
+// #3
+const search3 = function(nums, target) {
+  return nums.includes(target)
+}
+
+// #4
+const search4 = function(nums, target) {
+  return nums.incdexOf(target) !== -1
 }
