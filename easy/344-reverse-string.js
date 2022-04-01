@@ -34,7 +34,7 @@ const reverseString = function(s) {
 }
 
 // #2
-const reverseString = function(s) {
+const reverseString2 = function(s) {
   let i = 0
   let j = s.length - 1
 
@@ -51,7 +51,7 @@ const reverseString = function(s) {
 }
 
 // #3
-const reverseString = function(s) {
+const reverseString3 = function(s) {
   let i = 0
   let j = s.length - 1
 
