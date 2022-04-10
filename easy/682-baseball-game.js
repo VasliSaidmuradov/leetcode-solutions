@@ -1,3 +1,5 @@
+// 682. Baseball Game
+
 // You are keeping score for a baseball game with strange rules. The game consists of several rounds, where the scores of past rounds may affect future rounds' scores.
 
 // At the beginning of the game, you start with an empty record. You are given a list of strings ops, where ops[i] is the ith operation you must apply to the record and is one of the following:
@@ -81,7 +83,7 @@ const calPoints = function(ops) {
 }
 
 // #2
-const calPoints = function(ops) {
+const calPoints2 = function(ops) {
   const res = []
   let sum = 0
 
@@ -108,4 +110,25 @@ const calPoints = function(ops) {
   }
 
   return sum
+}
+
+// #3
+const calPoints3 = function(ops) {
+  const res = []
+
+  for (let i = 0; i < ops.length; i++) {
+    let cur = ops[i]
+
+    if (cur === '+') {
+      res.push(res[res.length - 1] + res[res.length - 2])
+    } else if (cur === 'C') {
+      res.pop()
+    } else if (cur === 'D') {
+      res.push(res[res.length - 1] * 2)
+    } else {
+      res.push(+cur)
+    }
+  }
+
+  return res.reduce((acc, el) => acc + el)
 }
