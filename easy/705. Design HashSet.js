@@ -37,11 +37,9 @@
 
 
 // #1
-
-/** 
- * @param {number} key
- * @return {void}
- */
+const MyHashSet = function() {
+  this.mySet = []
+}
  MyHashSet.prototype.add = function(key) {
   for (let item of this.mySet) {
     if (key === item) return null
@@ -51,11 +49,6 @@
 
   return this
 }
-
-/** 
- * @param {number} key
- * @return {void}
- */
 MyHashSet.prototype.remove = function(key) {
   for (let i = 0; i < this.mySet.length; i++) {
     if (key === this.mySet[i]) {
@@ -66,11 +59,6 @@ MyHashSet.prototype.remove = function(key) {
 
   return this
 }
-
-/** 
- * @param {number} key
- * @return {boolean}
- */
 MyHashSet.prototype.contains = function(key) {
   for (let item of this.mySet) {
     if (key === item) return true
@@ -79,47 +67,30 @@ MyHashSet.prototype.contains = function(key) {
   return false
 }
 
-/** 
- * Your MyHashSet object will be instantiated and called as such:
- * var obj = new MyHashSet()
- * obj.add(key)
- * obj.remove(key)
- * var param_3 = obj.contains(key)
- */
-
-
-
 // #2
-const MyHashSet = function() {
-  this.t = new Set(); 
+const MyHashSet2 = function() {
+  this.t = new Set();
 }
-
-MyHashSet.prototype.add = function(key) {
+MyHashSet2.prototype.add = function(key) {
   return this.t.add(key)
 }
-
-MyHashSet.prototype.remove = function(key) {
+MyHashSet2.prototype.remove = function(key) {
   this.t.delete(key)
 }
-
-MyHashSet.prototype.contains = function(key) {
+MyHashSet2.prototype.contains = function(key) {
   return this.t.has(key)  
 }
 
-
 // #3
-const MyHashSet = function() {
+const MyHashSet3 = function() {
   this.set = {}
 }
-
-MyHashSet.prototype.add = function(key) {
+MyHashSet3.prototype.add = function(key) {
   this.set[key] = true
 }
-
-MyHashSet.prototype.remove = function(key) {
+MyHashSet3.prototype.remove = function(key) {
   delete this.set[key]
 }
-
-MyHashSet.prototype.contains = function(key) {
+MyHashSet3.prototype.contains = function(key) {
   return this.set.hasOwnProperty(key) 
 }
