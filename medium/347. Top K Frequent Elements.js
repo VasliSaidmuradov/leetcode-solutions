@@ -57,3 +57,27 @@ const topKFrequent2 = function(nums, k) {
   }
   return res.sort((a, b) => b[0] - a[0]).map(el => el[1]).slice(0,k)
 }
+
+// #3 - Time O(n), Space O(n)
+const topKFrequent3 = function(nums, k) {
+  const obj = {}
+  const arr = new Array(nums.length + 1).fill([])
+  const res = []
+
+  for (let num of nums) {
+    obj[num] = (obj[num] || 0) + 1
+  }
+
+  for (let [num, count] of Object.entries(obj)) {
+    arr[count] = [...arr[count], +num]
+  }
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    if (arr[i].length) {
+      res.push(...arr[i])
+      if (res.length === k) {
+        return res
+      }
+    }
+  }
+}
