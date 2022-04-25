@@ -47,3 +47,24 @@ const longestConsecutive = function(nums) {
   }
   return Math.max(max, count)
 };
+
+// #2
+const longestConsecutive2 = function(nums) {
+  let set = new Set(nums)
+  let max = 0
+  
+  for ( let n of set) {
+    if (!set.has(n - 1)) {
+      let count = 0
+
+      while (set.has(n)) {
+        count++
+        n++
+      }
+      
+      max = Math.max(count, max)  
+    }
+  }
+
+  return max
+};
