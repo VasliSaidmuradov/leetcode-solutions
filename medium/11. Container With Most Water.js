@@ -1,3 +1,5 @@
+// 11. Container With Most Water
+
 // You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 
 // Find two lines that together with the x-axis form a container, such that the container contains the most water.
@@ -27,10 +29,6 @@
 
 
 
-
-// Solutions:
-
-
 // #1
 const maxArea = function(h) {
   let area = 0
@@ -46,7 +44,7 @@ const maxArea = function(h) {
 }
 
 // #2
-const maxArea = function(height) {
+const maxArea2 = function(height) {
   let i = 0
   let j = height.length - 1
   let maxArea = 0
@@ -62,3 +60,39 @@ const maxArea = function(height) {
   return maxArea
 }
 
+// #3
+const maxArea3 = function(h) {
+  let max = 0
+  let l = 0
+  let r = h.length - 1
+
+  while (l < r) {
+    max = Math.max(max, Math.min(h[l], h[r]) * (r - l))
+    if (h[l] <= h[r]) {
+      l++
+    } else {
+      r--
+    }
+  }
+
+  return max
+};
+
+// #4
+const maxArea4 = function(h) {
+  let max = 0
+  let l = 0
+  let r = h.length - 1
+
+  while (l < r) {
+    if (h[l] < h[r]) {
+      max = Math.max(max, h[l] * (r - l))
+      l++
+    } else {
+      max = Math.max(max, h[r] * (r - l))
+      r--
+    }
+  }
+
+  return max
+};
