@@ -1,6 +1,6 @@
-// Given a string s, find the length of the longest substring without repeating characters.
+// 3. Longest Substring Without Repeating Characters
 
- 
+// Given a string s, find the length of the longest substring without repeating characters.
 
 // Example 1:
 
@@ -36,41 +36,60 @@
 
 // Solutions
 
+
 // #1
 const lengthOfLongestSubstring = function(s) {
-  let max = ''
-  let temp = ''
-  const map = new Map()
+  const charSet = new Set()
+  let l = 0
+  let longest = 0
 
-  let i = 0
-  let j = 0
-
-  while (j < s.length) {
-    if (!map.has(s[j])) {
-      map.set(s[j], true)
-      temp += s[j]
-      j++
-    } else {
-      if (temp.length > max.length) {
-          max = temp
-      }
-      temp = ''
-      map.clear()
-      i++
-      j = i
+  for (let i = 0; i < s.length; i++) {
+    while (charSet.has(s[i])) {
+      charSet.delete(s[l])
+      l++
     }
-  }
-  
-  if (temp.length > max.length) {
-    max = temp
+    charSet.add(s[i])
+    longest = Math.max(longest, i - l + 1)
   }
 
-  return max.length
-}
+  return longest
+};
+
+// #1
+// const lengthOfLongestSubstring = function(s) {
+//   let max = ''
+//   let temp = ''
+//   const map = new Map()
+
+//   let i = 0
+//   let j = 0
+
+//   while (j < s.length) {
+//     if (!map.has(s[j])) {
+//       map.set(s[j], true)
+//       temp += s[j]
+//       j++
+//     } else {
+//       if (temp.length > max.length) {
+//           max = temp
+//       }
+//       temp = ''
+//       map.clear()
+//       i++
+//       j = i
+//     }
+//   }
+  
+//   if (temp.length > max.length) {
+//     max = temp
+//   }
+
+//   return max.length
+// }
 
 
 // #2
-const lengthOfLongestSubstring = function(s) {
+const lengthOfLongestSubstring2 = function(s) {
   let longest = 0
   let seen = {}
   let start = 0
