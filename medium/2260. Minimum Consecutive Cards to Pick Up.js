@@ -52,3 +52,22 @@ const minimumCardPickup = function(cards) {
 
   return min
 };
+
+// #2
+const minimumCardPickup2 = function(cards) {
+  let hash = new Map()
+  let min = Infinity
+
+  for (let i = 0; i < cards.length; i++) {
+    if (hash.has(cards[i])) {
+      let f = hash.get(cards[i]).pop()
+      let len = i - f + 1
+      min = Math.min(min, len)
+      hash.get(cards[i]).push(i)
+    } else {
+      hash.set(cards[i], [i])
+    }
+  }
+
+  return min === Infinity ? -1 : min
+};
