@@ -27,7 +27,7 @@
 
 // Solutions: 
 
-// #1
+// #1 Time O(n), Space O(n)
 const sortArrayByParity = function(nums) {
   const even = []
   const odd = []
@@ -39,3 +39,25 @@ const sortArrayByParity = function(nums) {
 
   return [...even, ...odd]
 }
+
+// #2 Time O(n), Space O(1)
+const sortArrayByParity = function(nums) {
+  let idx = 0
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 0) {
+      [nums[idx], nums[i]] = [nums[i], nums[idx]]
+      idx++
+    }
+  }
+  return nums
+};
+
+// #3
+const sortArrayByParity = function(nums) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 0) {
+      nums.unshift(nums.splice(i, 1))
+    }
+  }
+  return nums
+};
