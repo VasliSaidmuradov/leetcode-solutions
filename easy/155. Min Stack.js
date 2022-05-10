@@ -68,20 +68,20 @@ MinStack.prototype.getMin = function() {
 }
 
 // #2
-const MinStack = function() {
+const MinStack2 = function() {
   this.stack = []
   this.min = []
 }
 
-MinStack.prototype.push = function(val) {
+MinStack2.prototype.push = function(val) {
 	this.stack.push(val)
 	
     if (!this.min.length || val <= this.getMin()) {
-        this.min.push(val)
+      this.min.push(val)
     }
 }
 
-MinStack.prototype.pop = function() {
+MinStack2.prototype.pop = function() {
   if (!this.stack.length) return null
 
   const removed = this.stack.pop()
@@ -93,11 +93,38 @@ MinStack.prototype.pop = function() {
   return removed
 }
 
-MinStack.prototype.top = function() {
+MinStack2.prototype.top = function() {
   return this.stack[this.stack.length - 1]
 }
 
-MinStack.prototype.getMin = function() {
+MinStack2.prototype.getMin = function() {
   return this.min[this.min.length - 1]
 }
 
+// #3
+const MinStack3 = function() {
+  this.stack = []
+};
+
+MinStack3.prototype.push = function(val) {
+  if (!this.stack.length) {
+    this.stack.push([val, val])
+  } else {
+    let [num, min] = this.stack[this.stack.length - 1]
+    min = Math.min(min, val)
+
+    this.stack.push([val, min])
+  }
+};
+
+MinStack3.prototype.pop = function() {
+  this.stack.pop()
+};
+
+MinStack3.prototype.top = function() {
+  return this.stack[this.stack.length - 1][0]
+};
+
+MinStack3.prototype.getMin = function() {
+  return this.stack[this.stack.length - 1][1]
+};
