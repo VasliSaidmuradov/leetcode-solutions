@@ -50,3 +50,19 @@ const removeDigit = function(number, digit) {
   }
   return max
 };
+
+
+// Python 3
+
+// class Solution:
+//     def removeDigit(self, number: str, digit: str) -> str:
+//         maxNum = '0'
+        
+//         for i in range(len(number)):
+//             if number[i] == digit:
+//                 temp = number[:i] + number[i+1:]
+                
+//                 if temp > maxNum:
+//                     maxNum = temp
+                
+//         return maxNum
