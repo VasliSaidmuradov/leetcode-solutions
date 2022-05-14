@@ -45,12 +45,15 @@ const networkDelayTime = (times, N, K) => {
   const time = Array(N + 1).fill(Infinity);
   time[K] = 0;
 
-  for (let i = 0; i < N; i++) {
+  let updated = true
+  for (let i = 0; i < N && updated; i++) {
+    updated = false
     for (const [u, v, t] of times) {
       if (time[u] === Infinity) continue;
       
       if (time[v] > time[u] + t) {
         time[v] = time[u] + t;
+        updated = true
       }
     }
   }
