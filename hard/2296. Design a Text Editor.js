@@ -120,3 +120,52 @@ TextEditor.prototype.cursorRight = function(k) {
   min = Math.min(min, this.text.length)
   return this.text.slice(-min)
 };
+
+
+// #2
+const TextEditor2 = function() {
+  this.leftText = ''
+  this.rightText = ''
+};
+
+/** 
+* @param {string} text
+* @return {void}
+*/
+TextEditor2.prototype.addText = function(text) {
+  this.leftText += text
+};
+
+/** 
+* @param {number} k
+* @return {number}
+*/
+TextEditor2.prototype.deleteText = function(k) {
+  if (k > this.leftText.length) k = this.leftText.length
+  this.leftText = this.leftText.substring(0, this.leftText.length - k)
+  return k
+};
+
+/** 
+* @param {number} k
+* @return {string}
+*/
+TextEditor2.prototype.cursorLeft = function(k) {
+  if (this.leftText.length < k) k = this.leftText.length
+  let temp = this.leftText.substring(this.leftText.length - k)
+  this.leftText = this.leftText.substring(0, this.leftText.length - k)
+  this.rightText = temp + this.rightText
+  return this.leftText.substring(this.leftText.length - Math.min(this.leftText.length, 10))
+};
+
+/** 
+* @param {number} k
+* @return {string}
+*/
+TextEditor2.prototype.cursorRight = function(k) {
+  if (this.rightText.length < k) k = this.rightText.length
+  let temp = this.rightText.substring(0, k)
+  this.rightText = this.rightText.substring(k)
+  this.leftText =  this.leftText + temp
+  return this.leftText.substring(this.leftText.length - Math.min(this.leftText.length, 10))
+};
