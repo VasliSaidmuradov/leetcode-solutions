@@ -1,3 +1,5 @@
+// 1332. Remove Palindromic Subsequences
+
 // You are given a string s consisting only of letters 'a' and 'b'. In a single step you can remove one palindromic subsequence from s.
 
 // Return the minimum number of steps to make the given string empty.
@@ -60,3 +62,11 @@ const isPalindrome = str => {
 
   return true
 }
+
+// #2
+const removePalindromeSub2 = function(s) {
+  for (let i = 0; i < s.length - 1 - i; i++) {
+    if (s[i] !== s[s.length - 1 - i]) return 2
+  }
+  return 1
+};
