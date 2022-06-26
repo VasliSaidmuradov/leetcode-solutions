@@ -67,7 +67,7 @@ const addTwoNumbers = function(l1, l2) {
 }
 
 // #2
-const addTwoNumbers = function(l1, l2) {
+const addTwoNumbers2 = function(l1, l2) {
   let cur1 = l1
   let cur2 = l2
   let newTail = new ListNode() 
@@ -136,7 +136,7 @@ const addTwoNumbers = function(l1, l2) {
 }
 
 // #3
-const addTwoNumbers = function(l1, l2) {
+const addTwoNumbers3 = function(l1, l2) {
   let lo = null, remainder = false, cur
 
   do {
