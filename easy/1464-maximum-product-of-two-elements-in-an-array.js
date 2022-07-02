@@ -42,7 +42,7 @@ const maxProduct = function(nums) {
 
 
 // #2
-const maxProduct = function(nums) {
+const maxProduct2 = function(nums) {
   let max = -Infinity
   let max2 = -Infinity
 
