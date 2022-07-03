@@ -44,7 +44,7 @@ const isIsomorphic = function(s, t) {
 }
 
 // #2
-const isIsomorphic = function(s, t) {
+const isIsomorphic2 = function(s, t) {
   const obj1 = {}
   const obj2 = {}
 
@@ -63,14 +63,14 @@ const isIsomorphic = function(s, t) {
 }
 
 // #3
-const isIsomorphic = function(s, t) {
+const isIsomorphic3 = function(s, t) {
   let charMap = new Map()
 
   for (let i = 0; i < s.length; i += 1) {
     if (!charMap.get(s[i])) {
-    charMap.set(s[i], t[i])
+      charMap.set(s[i], t[i])
     } else {
-    if (charMap.get(s[i]) != t[i]) return false
+      if (charMap.get(s[i]) != t[i]) return false
     }
   }
 
