@@ -68,7 +68,7 @@ const hasCycle = function(head) {
 }
 
 // #2
-const hasCycle = function(head) {
+const hasCycle2 = function(head) {
   if (!head) return false
 
   let slow = head
@@ -87,7 +87,7 @@ const hasCycle = function(head) {
 }
 
 // #3
-const hasCycle = head => {
+const hasCycle3 = head => {
   let visitedNodes = new Set()
 
   while (head !== null) {
