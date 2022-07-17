@@ -93,3 +93,23 @@ const smallestTrimmedNumbers = function(nums, queries) {
 const findMin = (arr, k) => {
   return arr[k - 1][1]
 }
+
+// #2
+const smallestTrimmedNumbers2 = function(nums, queries) {
+  let res = []
+  for (let [k, trim] of queries) {
+    const arr = nums.map((el, idx) => {
+      return { idx,  el: el.slice(-trim) }
+    })
+
+    arr.sort((a, b) => {
+      if(a.el === b.el) {
+        return a.idx - b.idx
+      }
+      return a.el.localeCompare(b.el)
+    })
+
+    res.push(arr[k - 1].idx)
+  }
+  return res
+};
