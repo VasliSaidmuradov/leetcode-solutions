@@ -65,7 +65,7 @@ const summaryRanges = function(nums) {
 }
 
 // #2
-const summaryRanges = function(nums) {
+const summaryRanges2 = function(nums) {
   if (!nums.length) return nums    
   if (nums.length < 2) return [`${nums[0]}`]
 
