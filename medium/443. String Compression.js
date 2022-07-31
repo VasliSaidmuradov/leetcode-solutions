@@ -84,7 +84,7 @@ const compress = function(chars) {
 }
 
 // #1-1
-const compress = function(chars) {
+const compress2 = function(chars) {
   if (chars.length < 2) return chars.length
 
   let temp = ''
@@ -116,7 +116,7 @@ const compress = function(chars) {
 }
 
 // #2
-const compress = function(chars) {
+const compress3 = function(chars) {
   let lastChar=chars[0]
   let count=1
   let out=[]
@@ -147,3 +147,27 @@ const compress = function(chars) {
     chars.push(x)
   })
 }
+
+
+// #4 Time O(N) | Space O(1)
+const compress4 = function(chars) {
+  let l = 0
+  let r = 1
+  let count = 0
+
+  while (r < chars.length) {
+    let temp = ''
+    while (chars[l] === chars[r]) {
+      r++
+    }
+    count = r - l
+
+    if (count > 1) {
+      temp += count
+    }
+
+    chars.splice(l+1, count-1, ...temp)
+    l += temp.length+1
+    r = l+1
+  }
+};
