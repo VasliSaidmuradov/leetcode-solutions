@@ -56,7 +56,7 @@
 }
 
 // #2
-const isValid = function(s) {
+const isValid2 = function(s) {
   const brackets = {
   ')': '(',
   '}': '{',
